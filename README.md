@@ -2,6 +2,14 @@
 
 This repository contains the code for paper [CiT: Curation in Training for Effective Vision-Language Data](https://arxiv.org/abs/xxxx.xxxxx). For the first time, CiT curates/optimizes training data during (pre-)training a CLIP-style model, archieves better scaling law and beats human's offline data filtering (for potential downstream tasks).
 
+```bibtex 
+@inproceedings{xu2022cit,
+   title={CiT: Curation in Training for Effective Vision-Language Data},
+   author={Hu Xu, Saining Xie, Po-Yao Huang, Licheng Yu, Russell Howes, Gargi Ghosh, Luke Zettlemoyer and Christoph Feichtenhofer},
+   journal={arXiv preprint arXiv:xxxx.xxxxx},
+   year={2022}
+}
+```
 
 ## Updates
 * 01/05/2023: initial release.
@@ -78,7 +86,7 @@ coming soon
 
 ### Training
 
-**Data**
+**Data**  
 Preprocess YFCC15M can be done as follows:
 ```bash 
 mkdir -p data/yfcc15m
@@ -93,7 +101,7 @@ mkdir -p data/yfcc100m
 python scripts/make_yfcc100m_dataset.py
 ```
 
-**Training scripts**
+**Training scripts**  
 
 Every config is written as a native python function/class to record the args and neither bash args or mixed programming languages nor python config (eg, versioning OmegaConf or yaml).
 Check example configs in `run_configs.py`, e.g., 
@@ -104,17 +112,24 @@ torchrun --nproc_per_node=8 main.py curate100_5k_bsz16k  # on a local node with 
 python submitit_citclip.py curate100_5k_bsz16k  # submit the SLURM job with 16 GPUs (nodes=2 and ngpus=8). `conda install -c conda-forge submitit` or `pip install submitit`
 ```
 
-**Single GPU Training**
+**Single GPU Training**  
 coming soon
 
 ## Curated Dataset
-As a side benefit, CiT outputs a dataset.  
+As a side benefit, CiT outputs a dataset. 
+
 **YFCC100M4ImageNet**  
 coming soon
 
 ## Bugs or questions?
 
 If you have any questions related to the code or the paper, feel free to email Hu Xu (`huxu@meta.com`).
+
+## TODO
+
+- [] demo of usage
+- [] model weights
+- [] integration
 
 ## Citation
 
