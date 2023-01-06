@@ -6,9 +6,9 @@ from configs import Config
 ########### running ###########
 # torchrun --nproc_per_node=8 main.py <config>
 
-def eval_curate100_5k_bsz16k():
+def eval_yfcc15m_in1k_mocob16():
     return Config(
-        output_dir="curate100_5k_bsz16k",
+        output_dir="yfcc15m_in1k_mocob16",
         eval=True,
         resume="checkpoint-best.pth",
         dataset="yfcc15m_tag",
@@ -29,7 +29,7 @@ def eval_curate100_5k_bsz16k():
     )
 
 
-def curate100_5k_bsz16k():
+def yfcc15m_in1k_mocob16():
     return Config(
         val_task="imagenet",
         dataset="yfcc15m_tag",
@@ -50,7 +50,7 @@ def curate100_5k_bsz16k():
     )
 
 
-def yfcc100m_curate100_t07_5k_bsz16k():
+def yfcc100m_in1k_mocob16():
     return Config(
         val_task="imagenet",
         dataset="yfcc100m_tag",

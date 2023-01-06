@@ -55,14 +55,15 @@ cd ..
 ```
 Note it is recommended to have different copies of timm with local imports since MoCo-v3 and AugReg models may ask for different versions (and timm is NOT backward/forward compatible). SWAG is from torch hub so we don't need to do anything.
 
-Then download checkpoints of pre-trained vision encoders:
+**Training only**  
+To download checkpoints of pre-trained vision encoders:
 ```bash 
 cd pretrained_models && wget https://dl.fbaipublicfiles.com/moco-v3/vit-b-300ep/vit-b-300ep.pth.tar  # moco-v3
 cd ..
 ```
 Checkpoints for AugReg (timm) or SWAG (torch hub) should be automatically downloaded.
 
-Lastly, launch the follow commands to convert these 3rd party models into huggingface models.
+Lastly, launch the follow commands to convert these 3rd party models into huggingface models for training.
 
 ```bash 
 python -m hfmodels.moco
@@ -71,18 +72,96 @@ python -m hfmodels.swag
 ```
 You should find them in `pretrained_models`.
 
+### Download CiT Pretrained Checkpoints
+```bash 
+wget https://dl.fbaipublicfiles.com/MMPT/cit/yfcc15m_in1k_mocob16.tar
+tar xvf yfcc15m_in1k_mocob16.tar  # expected in pretrained_models/yfcc15m_in1k_mocob16
+```
+Check [Model List](#model-list) for other models.
 
 ### Use CiT with PyTorch
-coming soon
+For transparency on pytorch, you can use the following code to load CiT pre-trained models (similar to resuming a training in `main.py`):
+
+```python 
+import torch
+import run_configs
+
+from torch.nn import functional as F
+from models_citclip import build_model
+
+config_name = "yfcc15m_in1k_mocob16"
+args = getattr(run_configs, config_name)()
+model, tokenizer = build_model(args)
+
+state_dict = torch.load(f"pretrained_models/{config_name}/pytorch_model.bin", map_location='cpu')
+model.load_state_dict(state_dict)
+model.eval()
+
+inputs = tokenizer(["a photo of dog"], padding="max_length", truncation=True, max_length=args.max_bert_length, return_tensors="pt")
+inputs["pixel_values"] = torch.randn(1, 3, 224, 224)
+with torch.no_grad():
+    outputs = model(**inputs)
+    image_embeds = F.normalize(outputs["image_embeds"], dim=-1, p=2)
+    text_embeds = F.normalize(outputs["text_embeds"], dim=-1, p=2)
+    cosine = image_embeds @ text_embeds.t()
+print(cosine.item())
+```
 
 ### Use CiT with Huggingface
-coming soon
+Please run the following to dump pre-trained encoders into Transformer compatible interface (we converted all pre-trained checkpoints into huggingface format). Hosting checkpoints in huggingface coming soon.
+
+```python 
+import torch
+
+import hfmodels
+import run_configs
+
+from torch.nn import functional as F
+from transformers import AutoModel, AutoTokenizer
+
+
+config_name = "yfcc15m_in1k_mocob16"
+args = getattr(run_configs, config_name)()
+
+model = AutoModel.from_pretrained(f"pretrained_models/{config_name}")
+tokenizer = AutoTokenizer.from_pretrained(args.text_pretrained)  # TODO: we didn't save tokenizer, so read the original.
+
+inputs = tokenizer(["a photo of dog"], padding="max_length", truncation=True, max_length=args.max_bert_length, return_tensors="pt")
+inputs["pixel_values"] = torch.randn(1, 3, 224, 224)
+
+with torch.no_grad():
+    outputs = model(**inputs)
+    image_embeds = F.normalize(outputs.image_embeds, dim=-1, p=2)
+    text_embeds = F.normalize(outputs.text_embeds, dim=-1, p=2)
+    cosine = image_embeds @ text_embeds.t()
+
+print(cosine.item())
+print(outputs.logits_per_image.item())  # this is multiplied by logit_scale by HF.
+```
+
 
 ## Model List
-coming soon
+Our released models are listed as following. You can import these models by the following Get Started/Evaluation section. 
+|              Model              | Table in Paper |
+|:-------------------------------|:--------:|
+|  [cit/yfcc15m_in1k_mocob16](https://dl.fbaipublicfiles.com/MMPT/cit/yfcc15m_in1k_mocob16.tar) | Table 4 |
+| [cit/yfcc100m_in1k_mocob16](https://dl.fbaipublicfiles.com/MMPT/cit/yfcc100m_in1k_mocob16.tar) | Table 4 |
+
+More models coming soon.
 
 ## Evaluation
-coming soon
+Evaluate on IN-1K:
+
+```bash 
+python main.py yfcc15m_in1k_mocob16 --resume pretrained_models/yfcc15m_in1k_mocob16 --eval 
+```
+
+Evaluate on 26 tasks:
+```bash 
+python main.py eval_yfcc15m_in1k_mocob16 --resume pretrained_models/yfcc15m_in1k_mocob16 --eval 
+# or via submitit:
+python submitit_citclip.py eval_yfcc15m_in1k_mocob16
+```
 
 ### Training
 
@@ -129,7 +208,7 @@ If you have any questions related to the code or the paper, feel free to email H
 
 - [] demo of usage
 - [] model weights
-- [] integration
+- [] integrated downloading with huggingface and pytorch hub
 
 ## Citation
 

@@ -211,15 +211,21 @@ def main(args):
 
     start_epoch, best_acc, step = 0, [0.], [0]
     if args.resume:
-        if args.resume.startswith("checkpoint"):
-            args.resume = os.path.join(args.output_dir, args.resume)
-        start_epoch, _, best_acc, step = misc.load_model(args=args, model_without_ddp=model_without_ddp, optimizer=optimizer, loss_scaler=loss_scaler)
-        best_acc, step = [best_acc], [step if step is not None else 0]
+        if args.resume.endswith(".pth"):  # a pytorch checkpoint for resuming training.
+            if args.resume.startswith("checkpoint"):
+                args.resume = os.path.join(args.output_dir, args.resume)
+            start_epoch, _, best_acc, step = misc.load_model(args=args, model_without_ddp=model_without_ddp, optimizer=optimizer, loss_scaler=loss_scaler)
+            best_acc, step = [best_acc], [step if step is not None else 0]
 
-        if isinstance(dataset_train, torch.utils.data.IterableDataset):
-            # random from step to avoid dupped train.
-            dataset_train.start_shard_id = step[0] % dataset_train.num_shards
-        print("resuming", args.resume, "from step", step[0], "with best_acc", best_acc[0])
+            if isinstance(dataset_train, torch.utils.data.IterableDataset):
+                # random from step to avoid dupped train.
+                dataset_train.start_shard_id = step[0] % dataset_train.num_shards
+            print("resuming", args.resume, "from step", step[0], "with best_acc", best_acc[0])
+        else:
+            print("assuming a huggingface transformer pretrained model (no optimizer states).")
+            from models_citclip import CiTCLIPVisionTextDualEncoderModel
+            metric = evaluate(args, model, val_transform, tokenizer)
+            model = CiTCLIPVisionTextDualEncoderModel.from_pretrained(args.resume)
     if args.eval:
         metric = evaluate(args, model, val_transform, tokenizer)
         json_str = json.dumps({"step": step[0], "acc": metric, "seen": eff_batch_size * step[0]})
