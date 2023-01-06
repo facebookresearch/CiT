@@ -1,13 +1,13 @@
 ## CiT: Curation in Training
 
-This repository contains the code for paper [CiT: Curation in Training for Effective Vision-Language Data](https://arxiv.org/abs/xxxx.xxxxx). For the first time, CiT curates/optimizes training data during (pre-)training a CLIP-style model, archieves better scaling law and beats human's offline data filtering (for potential downstream tasks).
+This repository contains the code for paper [CiT: Curation in Training for Effective Vision-Language Data](https://arxiv.org/abs/2301.02241). For the first time, CiT curates/optimizes training data during (pre-)training a CLIP-style model, archieves better scaling law and beats human's offline data filtering (for potential downstream tasks).
 
 ```bibtex 
-@inproceedings{xu2022cit,
+@inproceedings{xu2023cit,
    title={CiT: Curation in Training for Effective Vision-Language Data},
    author={Hu Xu, Saining Xie, Po-Yao Huang, Licheng Yu, Russell Howes, Gargi Ghosh, Luke Zettlemoyer and Christoph Feichtenhofer},
-   journal={arXiv preprint arXiv:xxxx.xxxxx},
-   year={2022}
+   journal={arXiv preprint arXiv:2301.02241},
+   year={2023}
 }
 ```
 
@@ -20,6 +20,7 @@ This repository contains the code for paper [CiT: Curation in Training for Effec
   - [Overview](#overview)
   - [Getting Started](#getting-started)
     - [Prepare Vision Encoders](#prepare-vision-encoders)
+    - [Download Pretrained CiT](#download-pretrained-cit)
     - [Use CiT with PyTorch](#use-cit-with-pytorch)
     - [Use CiT with Huggingface](#use-cit-with-huggingface)
   - [Model List](#model-list)
@@ -72,7 +73,7 @@ python -m hfmodels.swag
 ```
 You should find them in `pretrained_models`.
 
-### Download CiT Pretrained Checkpoints
+### Download Pretrained CiT 
 ```bash 
 wget https://dl.fbaipublicfiles.com/MMPT/cit/yfcc15m_in1k_mocob16.tar
 tar xvf yfcc15m_in1k_mocob16.tar  # expected in pretrained_models/yfcc15m_in1k_mocob16
@@ -215,11 +216,11 @@ If you have any questions related to the code or the paper, feel free to email H
 Please cite our paper if CiT contributes in your work:
 
 ```bibtex 
-@inproceedings{xu2022cit,
+@inproceedings{xu2023cit,
    title={CiT: Curation in Training for Effective Vision-Language Data},
    author={Hu Xu, Saining Xie, Po-Yao Huang, Licheng Yu, Russell Howes, Gargi Ghosh, Luke Zettlemoyer and Christoph Feichtenhofer},
-   journal={arXiv preprint arXiv:xxxx.xxxxx},
-   year={2022}
+   journal={arXiv preprint arXiv:2301.02241},
+   year={2023}
 }
 ```
 
