@@ -1,6 +1,5 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates.
 # All rights reserved.
-# Copyright (c) Meta Platforms, Inc. All Rights Reserved
 
 import os
 import inspect

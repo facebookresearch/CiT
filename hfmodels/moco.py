@@ -1,7 +1,7 @@
-# Copyright (c) Meta Platforms, Inc. All Rights Reserved
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
 
 import torch
-
 import sys
 sys.path.append("moco-v3")  # repo path to moco-v3
 

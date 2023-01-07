@@ -1,4 +1,5 @@
-# Copyright (c) Meta Platforms, Inc. All Rights Reserved
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
 
 from configs import Config
 
