@@ -187,9 +187,9 @@ Every config is written as a native python function/class to record the args and
 Check example configs in `run_configs.py`, e.g., 
 
 ```bash 
-python main.py curate100_5k_bsz16k  # a local training of the default setup in the paper on YFCC15M on a single GPU.
-torchrun --nproc_per_node=8 main.py curate100_5k_bsz16k  # on a local node with 8 GPUs.
-python submitit_citclip.py curate100_5k_bsz16k  # submit the SLURM job with 16 GPUs (nodes=2 and ngpus=8). `conda install -c conda-forge submitit` or `pip install submitit`
+python main.py yfcc15m_in1k_mocob16  # a local training of the default setup in the paper on YFCC15M on a single GPU.
+torchrun --nproc_per_node=8 main.py yfcc15m_in1k_mocob16  # on a local node with 8 GPUs.
+python submitit_citclip.py yfcc15m_in1k_mocob16  # submit the SLURM job with 16 GPUs (nodes=2 and ngpus=8). `conda install -c conda-forge submitit` or `pip install submitit`
 ```
 
 **Single GPU Training**  
