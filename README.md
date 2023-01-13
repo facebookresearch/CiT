@@ -109,7 +109,7 @@ print(cosine.item())
 ```
 
 ### Use CiT with Huggingface
-Please run the following to dump pre-trained encoders into Transformer compatible interface (we converted all pre-trained checkpoints into huggingface format). Hosting checkpoints in huggingface coming soon.
+Please run the following to load checkpoints (Huggingface Transformer compatible). Hosting checkpoints in huggingface coming soon.
 
 ```python 
 import torch

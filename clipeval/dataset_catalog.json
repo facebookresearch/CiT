@@ -1,148 +1,148 @@
 {
     "food101": {
-        "path": "/your_path/data/vissl/food101",
+        "path": "data/food101",
         "type": "imagefolder",
         "train": "train",
         "test": "test"
     },
     "cifar10": {
-        "path": "/your_path/cifar10",
+        "path": "data/cifar10",
         "type": "special"
     },
     "cifar100": {
-        "path": "/your_path/cifar100",
+        "path": "data/cifar100",
         "type": "special"
     },
     "cub200": {
-        "path": "/your_path/data/cub200",
+        "path": "data/cub200",
         "type": "imagefolder",
         "train": "train",
         "test": "val"
     },
     "sun397": {
-        "path": "/your_path/data/vissl/sun397",
+        "path": "data/sun397",
         "type": "filelist",
         "train": "train",
         "test": "test"
     },
     "cars": {
-        "path": "/your_path/data/vissl/cars",
+        "path": "data/cars",
         "type": "imagefolder",
         "train": "train",
         "test": "test"
     },
     "aircraft": {
-        "path": "/your_path/data/vissl/aircraft",
+        "path": "data/aircraft",
         "type": "imagefolder",
         "train": "train",
         "test": "test"
     },
     "dtd": {
-        "path": "/your_path/data/vissl/dtd",
+        "path": "data/dtd",
         "type": "imagefolder",
         "train": "train",
         "test": "test"
     },
     "pets": {
-        "path": "/your_path/data/vissl/pets",
+        "path": "data/pets",
         "type": "imagefolder",
         "train": "train",
         "test": "test"
     },
     "caltech101": {
-        "path": "/your_path/data/vissl/caltech101",
+        "path": "data/caltech101",
         "type": "imagefolder",
         "train": "train",
         "test": "test"
     },
     "flowers": {
-        "path": "/your_path/data/vissl/flowers",
+        "path": "data/flowers",
         "type": "imagefolder",
         "train": "train",
         "test": "test"
     },
     "mnist": {
-        "path": "/your_path/mnist",
+        "path": "data/mnist",
         "type": "special"
     },
     "fer2013": {
-        "path": "/your_path/data/vissl/fer2013",
+        "path": "data/fer2013",
         "type": "imagefolder",
         "train": "train",
         "test": "test"
     },
     "stl10": {
-        "path": "/your_path/stl10",
+        "path": "data/stl10",
         "type": "special"
     },
     "eurosat": {
-        "path": "/your_path/data/vissl/eurosat",
+        "path": "data/eurosat",
         "type": "imagefolder",
         "train": "train",
         "test": "val"
     },
     "resisc45": {
-        "path": "/your_path/data/vissl/resisc45",
+        "path": "data/resisc45",
         "type": "imagefolder",
         "train": "train",
         "test": "test"
     },
     "gtsrb": {
-        "path": "/your_path/data/vissl/gtsrb",
+        "path": "data/gtsrb",
         "type": "imagefolder",
         "train": "train",
         "test": "test"
     },
     "kitti_distance": {
-        "path": "/your_path/data/vissl/kitti_distance",
+        "path": "data/kitti_distance",
         "type": "imagefolder",
         "train": "train",
         "test": "val"
     },
     "country211": {
-        "path": "/your_path/data/country211",
+        "path": "data/country211",
         "type": "imagefolder",
         "train": "train",
         "test": "test"
     },
     "patch_camelyon": {
-        "path": "/your_path/data/vissl/patch_camelyon",
+        "path": "data/patch_camelyon",
         "type": "imagefolder",
         "train": "train",
         "test": "val"
     },
     "ucf101_frames": {
-        "path": "/your_path/data/vissl/ucf101_frames",
+        "path": "data/ucf101_frames",
         "type": "imagefolder",
         "train": "train",
         "test": "val"
     },
     "kinetics700_frames": {
-        "path": "/checkpoint/qduval/datasets/k700",
+        "path": "data/k700",
         "type": "imagefolder",
         "train": "train_images",
         "test": "val_images"
     },
     "clevr_counts": {
-        "path": "/your_path/data/vissl/clevr_counts",
+        "path": "data/clevr_counts",
         "type": "filelist",
         "train": "train",
         "test": "val"
     },
     "hateful_memes": {
-        "path": "/your_path/data/hateful_memes",
+        "path": "data/hateful_memes",
         "type": "imagefolder",
         "train": "train",
         "test": "dev"
     },
     "rendered_sst2": {
-        "path": "/your_path/data/rendered_sst2",
+        "path": "data/rendered_sst2",
         "type": "imagefolder",
         "train": "train",
         "test": "test"
     },
     "imagenet": {
-        "path": "/your_path/imagenet_full_size/",
+        "path": "data/imagenet_full_size/",
         "type": "imagefolder",
         "train": "train",
         "test": "val"
