@@ -200,7 +200,7 @@ coming soon
 As a side benefit, CiT made a dataset (as a textbook). 
 
 **YFCC100M for ImageNet**  
-You can find this dataset (here)[https://dl.fbaipublicfiles.com/MMPT/cit/yfcc100m_for_in.tar.gz], with `{image ids}_{text key}` as keys and times of this pair used in CiT training as values. 
+You can find this dataset [here](https://dl.fbaipublicfiles.com/MMPT/cit/yfcc100m_for_in.tar.gz), with `{image ids}_{text key}` as keys and times of this pair used in CiT training as values. 
 
 ## Bugs or questions?
 
