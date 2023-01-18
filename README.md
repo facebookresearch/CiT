@@ -12,6 +12,7 @@ This repository contains the code for paper [CiT: Curation in Training for Effec
 ```
 
 ## Updates
+* 01/17/2023: release YFCC100M for ImageNet(-1K).
 * 01/05/2023: initial release.
 
 
@@ -196,10 +197,10 @@ python submitit_citclip.py yfcc15m_in1k_mocob16  # submit the SLURM job with 16 
 coming soon
 
 ## Curated Dataset
-As a side benefit, CiT outputs a dataset. 
+As a side benefit, CiT made a dataset (as a textbook). 
 
-**YFCC100M4ImageNet**  
-coming soon
+**YFCC100M for ImageNet**  
+You can find this dataset (here)[https://dl.fbaipublicfiles.com/MMPT/cit/yfcc100m_for_in.tar.gz], with `{image ids}_{text key}` as keys and times of this pair used in CiT training as values. 
 
 ## Bugs or questions?
 
@@ -207,8 +208,6 @@ If you have any questions related to the code or the paper, feel free to email H
 
 ## TODO
 
-- [] demo of usage
-- [] model weights
 - [] integrated downloading with huggingface and pytorch hub
 
 ## Citation
